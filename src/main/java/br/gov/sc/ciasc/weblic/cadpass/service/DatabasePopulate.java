@@ -2,11 +2,15 @@ package br.gov.sc.ciasc.weblic.cadpass.service;
 
 import br.gov.sc.ciasc.weblic.cadpass.domain.Orgao;
 import br.gov.sc.ciasc.weblic.cadpass.domain.OrgaoRepository;
+import br.gov.sc.ciasc.weblic.cadpass.domain.Solicitacao;
+import br.gov.sc.ciasc.weblic.cadpass.domain.SolicitacaoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.Calendar;
 
 @Component
 public class DatabasePopulate implements CommandLineRunner {
@@ -15,14 +19,36 @@ public class DatabasePopulate implements CommandLineRunner {
 
     @Autowired()
     private OrgaoRepository orgaoRepository;
+    @Autowired()
+    private SolicitacaoRepository solicitacaoRepository;
 
     @Override
     public void run(String... args) throws Exception {
         logger.info("DatabasePopulate, inicio");
 
         CriarOrgaos();
+        CriarSolicitacoes();
 
         logger.info("DatabasePopulate, fim");
+    }
+
+
+    private void CriarSolicitacoes() {
+//        Orgao orgao = orgaoRepository.findOne(Long.valueOf(10));
+        Orgao orgao = orgaoRepository.findByCodigo(1700);
+        CriarSolicitacao("SEALIC9906", orgao);
+    }
+
+    private void CriarSolicitacao(String userName, Orgao orgao) {
+        Solicitacao solicitacao = new Solicitacao();
+        solicitacao.setUserName(userName);
+        solicitacao.setOrgao(orgao);
+        solicitacao.setData(Calendar.getInstance().getTime());
+        solicitacaoRepository.save(solicitacao);
+        logger.info("Criou Solicitacao: id " + solicitacao.getId()
+                + ", username: " + solicitacao.getUserName()
+                + ", orgao: " + solicitacao.getOrgao().toString()
+        );
     }
 
     private void CriarOrgaos() {
