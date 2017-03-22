@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="layouts/layout">
+
     <head/>
+
     <body>
-        <div th:fragment="content">
+        <div layout:fragment="content">
 
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -13,8 +16,8 @@
                     -->
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Painel</a></li>
-                    <li><a href="#"> Solicitar senha</a></li>
+                    <li><a href="/"> Painel</a></li>
+                    <li class="active"> Solicitar senha</li>
                 </ol>
             </section>
 
@@ -39,7 +42,7 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        Solicitar senha de acesso ao terminal server do sistema LIC.
+                        Solicitar senha de acesso ao TS (Terminal Server) do sistema LIC.
                     </div>
                     <!--
                     <div class="box-footer">
