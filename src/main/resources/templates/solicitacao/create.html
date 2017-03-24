@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorator="layouts/layout">
 
     <head/>
@@ -10,14 +11,14 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Solicitar senha
+                    Senha de acesso ao LIC
                     <!--
                     <small>Blank example to the fixed layout</small>
                     -->
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="/"> Painel</a></li>
-                    <li class="active"> Solicitar senha</li>
+                    <li class="active"> Senha LIC</li>
                 </ol>
             </section>
 
@@ -31,25 +32,28 @@
                 </div>
                 -->
 
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Solicitar senha</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                <i class="fa fa-minus"></i></button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                                <i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        Solicitar senha de acesso ao TS (Terminal Server) do sistema LIC.
-                    </div>
-                    <!--
-                    <div class="box-footer">
-                    </div>
-                    -->
-                </div>
+                <div class="box box-success">
 
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Solicitar reconfiguração da senha de acesso ao LIC</h3>
+                    </div>
+
+                    <form role="form" method="post" th:object="${solicitacao}" th:action="@{/solicitacao/confirm}">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputOrgao">Órgão: </label>
+                                <input type="text" class="form-control" id="inputOrgao" placeholder="Órgão" th:field="*{orgao}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputUserName">User Name: </label>
+                                <input type="text" class="form-control" id="inputUserName" placeholder="User name" th:field="*{userName}"/>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-success">Solicitar reconfiguração de senha</button>
+                        </div>
+                    </form>
+                </div>
             </section>
         </div>
 
