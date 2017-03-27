@@ -1,6 +1,8 @@
 package br.gov.sc.ciasc.weblic.cadpass.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,5 +28,12 @@ public class Solicitacao {
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_solicitacao")
-    private Date data;
+    private Date dataCadastro;
+
+    @PrePersist
+    void preInsert() {
+        if (dataCadastro == null) {
+            dataCadastro = new Date();
+        }
+    }
 }

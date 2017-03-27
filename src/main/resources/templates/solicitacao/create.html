@@ -24,22 +24,22 @@
 
             <!-- Main content -->
             <section class="content">
-                <!--
-                <div class="callout callout-info">
-                    <h4>Tip!</h4>
-                    <p>Add the fixed class to the body tag to get this layout. The fixed layout is your best option if your sidebar
-                        is bigger than your content because it prevents extra unwanted scrolling.</p>
-                </div>
-                -->
-
+                
                 <div class="box box-success">
-
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Solicitar reconfiguração da senha de acesso ao LIC</h3>
-                    </div>
-
+    
                     <form role="form" method="post" th:object="${solicitacao}" th:action="@{/solicitacao/confirm}">
+                        
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Solicitar reconfiguração da senha de acesso ao LIC</h3>
+                        </div>
+                        
                         <div class="box-body">
+    
+                            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <p th:text="#{form.hasErrors}">Error Message</p>
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="inputOrgao">Órgão: </label>
                                 <input type="text" class="form-control" id="inputOrgao" placeholder="Órgão" th:field="*{orgao}"/>
@@ -49,6 +49,7 @@
                                 <input type="text" class="form-control" id="inputUserName" placeholder="User name" th:field="*{userName}"/>
                             </div>
                         </div>
+                        
                         <div class="box-footer">
                             <button type="submit" class="btn btn-success">Solicitar reconfiguração de senha</button>
                         </div>

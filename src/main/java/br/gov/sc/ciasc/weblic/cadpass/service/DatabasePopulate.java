@@ -37,13 +37,16 @@ public class DatabasePopulate implements CommandLineRunner {
 //        Orgao orgao = orgaoRepository.findOne(Long.valueOf(10));
         Orgao orgao = orgaoRepository.findByCodigo(1700);
         CriarSolicitacao("SEALIC9906", orgao);
+        CriarSolicitacao("SEALIC9907", orgao);
     }
 
     private void CriarSolicitacao(String userName, Orgao orgao) {
         Solicitacao solicitacao = new Solicitacao();
         solicitacao.setUserName(userName);
         solicitacao.setOrgao(orgao);
-        solicitacao.setData(Calendar.getInstance().getTime());
+//        if (userName == "SEALIC9906") {
+//            solicitacao.setDataCadastro(Calendar.getInstance().getTime());
+//        }
         solicitacaoRepository.save(solicitacao);
         logger.info("Criou Solicitacao: id " + solicitacao.getId()
                 + ", username: " + solicitacao.getUserName()
