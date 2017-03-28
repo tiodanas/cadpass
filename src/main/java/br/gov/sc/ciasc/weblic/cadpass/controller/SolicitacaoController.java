@@ -18,7 +18,7 @@ public class SolicitacaoController {
     @Autowired()
     private SolicitacaoRepository solicitacaoRepository;
 
-    @RequestMapping(value = "/solicitacao/create", method = RequestMethod.GET)
+    @RequestMapping(value = "solicitacao/create", method = RequestMethod.GET)
     String create(Model model) {
         Solicitacao solicitacao = new Solicitacao();
         System.out.println("--- SolicitacaoController.create, solicitacao: " + solicitacao);
@@ -26,23 +26,19 @@ public class SolicitacaoController {
         return "/solicitacao/create";
     }
 
-    @RequestMapping(value = "/solicitacao/confirm", method = RequestMethod.POST)
-    String confirm(Solicitacao solicitacao, Model model) {
-        System.out.println("--- SolicitacaoController.confirm, solicitacao: " + solicitacao);
-        model.addAttribute("solicitacao", solicitacao);
-        return "/solicitacao/confirm";
-    }
-
-    @RequestMapping(value = "/solicitacao/save", method = RequestMethod.POST)
-    public String save(@Valid Solicitacao solicitacao, BindingResult bindingResult) {
+    @RequestMapping(value = "solicitacao", method = RequestMethod.POST)
+    public String save(@Valid Solicitacao solicitacao, BindingResult bindingResult, Model model) {
         System.out.println("--- SolicitacaoController.save, solicitacao: " + solicitacao);
 
+        /*
         if(bindingResult.hasErrors()) {
             return "/solicitacao/create";
         }
+        */
 
-        Solicitacao solicitacaoSaved = solicitacaoRepository.save(solicitacao);
+        Solicitacao solicitacaoCreated = solicitacaoRepository.save(solicitacao);
 
-        return "redirect:/solicitacao/show/" + solicitacaoSaved.getId();
+        model.addAttribute("solicitacao", solicitacaoCreated);
+        return "solicitacao/created";
     }
 }
