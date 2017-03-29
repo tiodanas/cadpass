@@ -32,15 +32,15 @@
 
                         <div class="form-group">
                             <label class="control-label">Órgão: </label>
-                            <p class="form-control-static"><span th:text="${solicitacao.orgao}"></span></p>
+                            <p class="form-control-static"><span th:text="*{orgao}"></span></p>
                         </div>
                         <div class="form-group">
                             <label class="control-label">User Name: </label>
-                            <p class="form-control-static"><span th:text="${solicitacao.userName}"></span></p>
+                            <p class="form-control-static"><span th:text="*{userName}"></span></p>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Data da solicitação: </label>
-                            <p class="form-control-static"><span th:text="${solicitacao.dataCadastro}"></span></p>
+                            <p class="form-control-static"><span th:text="*{dataCadastro}"></span></p>
                         </div>
                     </div>
                     <!--

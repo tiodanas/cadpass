@@ -27,26 +27,37 @@
                 
                 <div class="box box-success">
     
-                    <form role="form" method="post" th:object="${solicitacao}" th:action="@{/solicitacao}">
+                    <form role="form" method="post" th:object="${solicitacao}" th:action="@{/solicitacao/confirm}">
                         
                         <div class="box-header with-border">
                             <h3 class="box-title">Solicitar reconfiguração da senha de acesso ao LIC</h3>
                         </div>
                         
                         <div class="box-body">
-    
+
                             <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <p th:text="#{form.hasErrors}">Error Message</p>
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputOrgao">Órgão: </label>
-                                <input type="text" class="form-control" id="inputOrgao" placeholder="Órgão" th:field="*{orgao}"/>
+                                <label for="selectOrgao">Órgão: </label>
+                                <select class="form-control" id="selectOrgao" required="required"
+                                        th:field="*{orgao}">
+                                    <div>
+                                        <option disabled="true" selected="selected"
+                                                value="">Selecione o Órgão...</option>
+                                        <option th:each="varOrgao : ${listaDeOrgaos}"
+                                                th:value="${varOrgao.id}"
+                                                th:text="${varOrgao.nome}"></option>
+                                    </div>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputUserName">User Name: </label>
-                                <input type="text" class="form-control" id="inputUserName" placeholder="User name" th:field="*{userName}"/>
+                                <input type="text" class="form-control" id="inputUserName"
+                                       placeholder="Informe o User Name..." required="required"
+                                       th:field="*{userName}"/>
                             </div>
                         </div>
                         

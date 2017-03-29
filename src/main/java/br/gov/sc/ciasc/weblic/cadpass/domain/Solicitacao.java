@@ -28,7 +28,7 @@ public class Solicitacao {
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_solicitacao")
-    private Date dataCadastro;
+    private Date dataCadastro = new Date();
 
     @PrePersist
     void preInsert() {

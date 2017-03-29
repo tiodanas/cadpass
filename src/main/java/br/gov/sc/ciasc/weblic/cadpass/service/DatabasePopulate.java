@@ -1,16 +1,14 @@
 package br.gov.sc.ciasc.weblic.cadpass.service;
 
 import br.gov.sc.ciasc.weblic.cadpass.domain.Orgao;
-import br.gov.sc.ciasc.weblic.cadpass.domain.OrgaoRepository;
+import br.gov.sc.ciasc.weblic.cadpass.repository.OrgaoRepository;
 import br.gov.sc.ciasc.weblic.cadpass.domain.Solicitacao;
-import br.gov.sc.ciasc.weblic.cadpass.domain.SolicitacaoRepository;
+import br.gov.sc.ciasc.weblic.cadpass.repository.SolicitacaoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.Calendar;
 
 @Component
 public class DatabasePopulate implements CommandLineRunner {
