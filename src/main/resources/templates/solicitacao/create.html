@@ -34,14 +34,14 @@
                         </div>
                         
                         <div class="box-body">
-
+                            <!--
                             <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <p th:text="#{form.hasErrors}">Error Message</p>
                             </div>
-                            
+                            -->
                             <div class="form-group">
-                                <label for="selectOrgao">Órgão: </label>
+                                <label class="control-label" for="selectOrgao">Órgão: </label>
                                 <select class="form-control" id="selectOrgao" required="required"
                                         th:field="*{orgao}">
                                     <div>
@@ -53,11 +53,14 @@
                                     </div>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="inputUserName">User Name: </label>
+
+                            <div th:class="${#fields.hasErrors('userName')} ? 'form-group has-error' : 'form-group'">
+                            <!--div class="form-group"-->
+                                <label class="control-label" for="inputUserName">User Name: </label>
                                 <input type="text" class="form-control" id="inputUserName"
                                        placeholder="Informe o User Name..." required="required"
                                        th:field="*{userName}"/>
+                                <span class="help-block" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"/>
                             </div>
                         </div>
                         

@@ -41,18 +41,13 @@
 
                             <div class="form-group">
                                 <label class="control-label">Órgão: </label>
-                                <p class="form-control-static" th:field="*{orgao}"><span th:text="*{orgao}"></span></p>
+                                <p class="form-control-static"><span th:text="*{orgao}"></span></p>
+                                <input type="text" style="display: none; visibility: hidden;" th:field="*{orgao}"/>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="inputUserName">User Name: </label>
-                                <!--p class="form-control-static" th:field="*{userName}"><span th:text="*{userName}"></span></p-->
-                                <input type="text" class="form-control" id="inputUserName"
-                                       placeholder="Informe o User Name..." required="required"
-                                       th:field="*{userName}"/>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Data Solicitação: </label>
-                                <p class="form-control-static" th:field="*{dataCadastro}"><span th:text="*{dataCadastro}"></span></p>
+                                <label class="control-label">User Name: </label>
+                                <p class="form-control-static"><span th:text="*{userName}"></span></p>
+                                <input type="text" style="display: none; visibility: hidden;" th:field="*{userName}"/>
                             </div>
                         </div>
                         <div class="box-footer">
