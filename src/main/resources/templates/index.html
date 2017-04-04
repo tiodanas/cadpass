@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorator="layouts/layout">
 
     <head/>
@@ -33,16 +34,48 @@
                 -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Solicitações</h3>
+                        <h3 class="box-title">Solicitações Pendentes</h3>
+                        <!--
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                 <i class="fa fa-minus"></i></button>
                             <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
                                 <i class="fa fa-times"></i></button>
                         </div>
+                        -->
                     </div>
-                    <div class="box-body">
-                        Solicitações pendentes: nenhuma.
+                    
+                    <div class="box-body no-padding">
+                        
+                        <!--span th:text="${solicitacoesPendentes}"/-->
+                        
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Órgão</th>
+                                    <th>User Name</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="solicitacao : ${solicitacoesPendentes}">
+                                    <td th:text="${#calendars.format(solicitacao.dataCadastro,'dd/MM/yyyy HH:mm')}"/>
+                                    <td th:text="${solicitacao.orgao}"/>
+                                    <td th:text="${solicitacao.userName}"/>
+                                    <td>
+                                        <a href="#"
+                                           th:href="@{/solicitacao/resolve/{id}(id=${solicitacao.id})}">
+                                            <span class="label label-success">
+                                                <!--i class="fa fa-check"/-->
+                                                Resolver
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <!--td th:text="${solicitacao.inStock}? #{true} : #{false}">yes</td-->
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

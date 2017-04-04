@@ -30,10 +30,13 @@ public class Solicitacao {
     @Column(name = "dt_solicitacao")
     private Date dataCadastro = new Date();
 
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    @Column(name = "tp_status")
+    private SolicitacaoStatus status = SolicitacaoStatus.PENDENTE;
+
     @PrePersist
     void preInsert() {
-        if (dataCadastro == null) {
-            dataCadastro = new Date();
-        }
+        dataCadastro = new Date();
     }
 }

@@ -2,6 +2,7 @@ package br.gov.sc.ciasc.weblic.cadpass.controller;
 
 import br.gov.sc.ciasc.weblic.cadpass.domain.Orgao;
 import br.gov.sc.ciasc.weblic.cadpass.domain.Solicitacao;
+import br.gov.sc.ciasc.weblic.cadpass.domain.SolicitacaoStatus;
 import br.gov.sc.ciasc.weblic.cadpass.repository.OrgaoRepository;
 import br.gov.sc.ciasc.weblic.cadpass.repository.SolicitacaoRepository;
 import br.gov.sc.ciasc.weblic.cadpass.service.EmailSender;
@@ -69,6 +70,8 @@ public class SolicitacaoController {
         if (bindingResult.hasErrors()) {
             return "/solicitacao/create";
         }
+
+        solicitacao.setStatus(SolicitacaoStatus.PENDENTE);
 
         if (!emailSender.sendEmailSolicitacaoCriada(solicitacao)) {
             return "/solicitacao/create";
