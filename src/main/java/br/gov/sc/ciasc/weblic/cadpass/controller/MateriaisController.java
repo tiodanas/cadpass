@@ -5,10 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+public class MateriaisController {
 
-    @RequestMapping("/")
-    String index(Model model) {
-        return "index";
+    @RequestMapping("/materiais")
+    String senhasTS(Model model) {
+        return "/materiais/index";
     }
+
 }

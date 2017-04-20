@@ -43,22 +43,29 @@
                                 </ul>
                             </li>
                             -->
-                            <li>
-                                <a href="#" th:href="@{/solicitacao/create}">
-                                    <i class="fa fa-unlock-alt"></i> <span>Solicitar senha</span>
-                                    <!--
+                            <li class="treeview">
+                                <a href="#" th:href="@{/}">
+                                    <i class="fa fa-unlock-alt"></i><span> Cadastros básicos</span>
                                     <span class="pull-right-container">
-                                        <small class="label pull-right bg-green">new</small>
+                                        <i class="fa fa-angle-left pull-right"></i>
                                     </span>
-                                    -->
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#" th:href="@{/materiais}"><i class="fa fa-circle-o"></i> Materiais</a></li>
+                                    <li><a href="#" th:href="@{/}"><i class="fa fa-circle-o"></i> Serviços</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" th:href="@{/senhaTs/index}">
+                                    <i class="fa fa-unlock-alt"></i><span> Senha de acesso remoto</span>
                                 </a>
                             </li>
                         </ul>
                     </section>
-                    <!--
+                    
                     <div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.2); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 124.95px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
                     </div>
-                    -->
+                    
                 </div>
                 <!-- /.sidebar -->
             </aside>

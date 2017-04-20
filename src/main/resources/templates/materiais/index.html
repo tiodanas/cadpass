@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layouts/layout">
+
+    <head/>
+
+    <body>
+        <div layout:fragment="content">
+
+            <section class="content-header">
+                <h1>
+                    Cadastro de Materiais
+                </h1>
+                <!-- Atalhos -->
+                <ol class="breadcrumb">
+                    <li class="active"> <a href="#" th:href="@{/}">LIC</a></li>
+                    <li class="active"> Cadastro de Materiais</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!--
+                <div class="callout callout-info">
+                    <h4>Tip!</h4>
+                    <p>Add the fixed class to the body tag to get this layout. The fixed layout is your best option if your sidebar
+                        is bigger than your content because it prevents extra unwanted scrolling.</p>
+                </div>
+                -->
+                <div class="box box-solid box-default">
+                    <div class="box-body">
+                        <div class="alert">
+                            <h4><i class="icon fa fa-archive"></i> Cadastro de Materiais no LIC</h4>
+                            O LIC utiliza a mesma base de dados do cadastro de materiais do sistema NUC.<br/>
+                            A classificação de materiais no LIC é a mesma do NUC: Grupos, Classes, Materiais Genéricos e Materiais.<br/>
+                            A inclusão de novos materiais não pode ser feita no LIC.<br/>
+                        </div>
+                        <p/>
+                        <div class="btn-group-vertical">
+                            <button type="button" class="btn btn-success">Consultar Grupos e Classes</button>
+                            <button type="button" class="btn btn-success">Consultar Materiais Genéricos</button>
+                            <button type="button" class="btn btn-success">Consultar Materiais</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+    </body>
+</html>
